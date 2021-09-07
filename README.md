@@ -101,6 +101,37 @@ A list of move jobs initiated for each recovery point being moved to archive.
 
 $MoveJobsSQL = .\moveArchivableRecoveryPointsForSQL.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -VMName "VMName" -DBName "DBName" -StartDate (Get-Date).AddDays(-165).ToUniversalTime() -EndDate (Get-date).AddDays(0).ToUniversalTime() 
 
+
+## Move all Archivable recovery point for all the databases for a particular SQL Server in Azure VM 
+
+### Location 
+Download [moveArchivableRecoveryPointsForSQLServer](https://github.com/hiaga/Az.RecoveryServices/blob/master/ArchiveFeatureSupport/moveArchivableRecoveryPointsForSQLServer.ps1)
+
+### Purpose
+
+This sample script moves all the archivable recovery point for all the databases for a SQLServer to archive. 
+ 
+
+### Input Parameters 
+
+1. Subscription 
+2. ResourceGroupName 
+3. VaultName 
+4. ServerName
+5. StartDate (Get-Date).AddDays(-x).ToUniversalTime() 
+6. EndDate (Get-date).AddDays(-y).ToUniversalTime() 
+
+Where x and y are the time-range between which you want to move the recovery points. 
+
+ 
+### Output 
+
+A list of move jobs initiated for each recovery point being moved to archive. 
+ 
+
+### Example Usage 
+
+$MoveJobsSQL = .\moveArchivableRecoveryPointsForSQLServer.ps1 -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -ServerName "ServerName" -StartDate (Get-Date).AddDays(-165).ToUniversalTime() -EndDate (Get-date).AddDays(0).ToUniversalTime() 
  
 
 ## Move all recommended recovery points to archive for a Virtual Machine workload 
